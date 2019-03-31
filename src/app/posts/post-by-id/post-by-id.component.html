@@ -1,0 +1,23 @@
+<app-progress *ngIf="loading"></app-progress>
+<app-message-log
+  *ngIf="serverMessages !== null"
+  [type]="serverMessages['type']"
+  [message]="serverMessages['message']"
+>
+</app-message-log>
+
+<app-post
+  [user]="userName"
+  [messages]="currMessage"
+  [getById]="true"
+  *ngIf="!deleting"
+>
+  <div class="post_actions" *ngIf="hasPermission">
+    <button class="btn red" (click)="deletePost()">Delete Post</button>
+    <button class="btn">
+      <a [routerLink]="['/changePost', _postId]" class="white-text"
+        >Change post</a
+      >
+    </button>
+  </div>
+</app-post>

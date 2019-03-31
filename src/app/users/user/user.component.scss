@@ -1,0 +1,29 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s all ease-in-out;
+  &_info {
+    display: flex;
+    flex-direction: column;
+    .user_name {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      &::first-letter {
+        text-transform: uppercase;
+        color: #c33;
+      }
+    }
+    .user_msg {
+      margin-left: 0.5rem;
+    }
+  }
+  &:hover {
+    background: #000;
+    color: #fff;
+    transform: translateX(2%);
+  }
+}
+.current_user {
+  background: #dcedc8;
+}

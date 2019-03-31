@@ -1,0 +1,43 @@
+<div class="col s12">
+  <div class="card orange white-text" *ngIf="messages">
+    <div class="post_image" *ngIf="messages.imageName">
+      <img
+        [src]="'@/../assets/img' + messages.imageName"
+        [alt]="messages.title"
+      />
+    </div>
+    <div class="card-content">
+      <span class="card-title">
+        <a
+          [routerLink]="['/post', messages.id]"
+          class="link_to"
+          *ngIf="!getById; else byId"
+          >{{ messages.title }}</a
+        >
+        <ng-template #byId>
+          <h4>{{ messages.title }}</h4>
+        </ng-template>
+      </span>
+      <div class="card-body">
+        {{ getById ? messages.body : messages.body.slice(0, 100) }}
+      </div>
+      <div class="card-footer">
+        <div class="post_user_name">
+          Author:
+          {{ user }}
+        </div>
+        <span class="post_time">
+          {{ messages.createdAt | date: "dd/MM/yyyy" }}
+        </span>
+
+        <a
+          *ngIf="!getById"
+          [routerLink]="['/post', messages.id]"
+          class="btn link_to"
+          >Read More</a
+        >
+      </div>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

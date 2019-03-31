@@ -1,0 +1,29 @@
+<app-search-bar [titles]="postTitles"></app-search-bar>
+<div class="post_sett_row">
+  <select
+    [(ngModel)]="selected"
+    (change)="filterByUser(selected)"
+    *ngIf="users && users.length > 1"
+  >
+    <option disabled selected name="selected">Choose by author</option>
+    <option value="*">All</option>
+    <option [value]="+user.Id" *ngFor="let user of users"
+      >{{ user.name }} ({{ user.Posts.length }})</option
+    >
+  </select>
+
+  <p>
+    <label>
+      <input type="checkbox" [(ngModel)]="checked" (change)="sortByTime()" />
+      <span>Show newest</span>
+    </label>
+  </p>
+</div>
+
+<div class="row">
+  <app-post
+    class="red"
+    *ngFor="let post of filterdUsers"
+    [messages]="post"
+  ></app-post>
+</div>

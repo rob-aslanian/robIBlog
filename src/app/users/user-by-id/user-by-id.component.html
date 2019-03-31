@@ -1,0 +1,58 @@
+<app-message-log
+  *ngIf="serverMessages !== null"
+  [type]="serverMessages['type']"
+  [message]="serverMessages['message']"
+></app-message-log>
+<app-progress *ngIf="loading"></app-progress>
+<div class="card" *ngIf="user">
+  <div class="collection">
+    <div class="collection-item">
+      <span class="badge green white-text"> {{ postsCount }} </span
+      >{{ user.name }}
+    </div>
+  </div>
+  <div class="card-content">
+    <button
+      class="btn red"
+      [disabled]="postsCount === 0"
+      (click)="delteAllMessage()"
+    >
+      Delete all post ({{ postsCount }})
+    </button>
+    <app-message-log
+      *ngIf="
+        userForm.controls['name'].invalid && userForm.controls['name'].dirty
+      "
+      type="error"
+      [message]="
+        userForm.controls['name'].errors?.required
+          ? 'Name is required'
+          : 'Max length is 50'
+      "
+      [useClose]="false"
+    ></app-message-log>
+
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input
+          [formControl]="userForm.controls['name']"
+          id="icon_prefix"
+          type="text"
+          placeholder="User name"
+          [(ngModel)]="newName"
+        />
+        <span [class.red-text]="userForm.controls['name'].value.length > 50"
+          >{{ userForm.controls["name"].value.length }}/50</span
+        >
+      </div>
+      <button
+        class="btn green"
+        type="submit"
+        [disabled]="newName.toLowerCase() == user.name.toLowerCase()"
+      >
+        Change name
+      </button>
+    </form>
+  </div>
+</div>

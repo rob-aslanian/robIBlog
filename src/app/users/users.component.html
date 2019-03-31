@@ -1,0 +1,15 @@
+<div class="progress" *ngIf="loading">
+  <div class="indeterminate"></div>
+</div>
+
+<app-message-log *ngIf="message !== null" [type]="msgType" [message]="message">
+</app-message-log>
+
+<h5 *ngIf="allUser">User Count: {{ allUser.length }}</h5>
+<div *ngFor="let user of allUser" class="collection">
+  <app-user
+    [user]="user"
+    (message)="getMessage($event)"
+    (removeUser)="removeUser($event)"
+  ></app-user>
+</div>

@@ -1,0 +1,15 @@
+<div class="file-field input-field">
+  <img [src]="imgUrl !== null ? imgUrl : '../../assets/img' + imageSrc " *ngIf="imgUrl !== null || imageSrc !== null" class="img_preview" />
+  <div class="file-path-wrapper" *ngIf="imageName !== null">
+    <input type="text" [value]="imageName" />
+  </div>
+  <div class="btn">
+    <span>Select image</span>
+    <input
+      #imageInput
+      type="file"
+      accept="image/*"
+      (change)="uploadImage(imageInput)"
+    />
+  </div>
+</div>

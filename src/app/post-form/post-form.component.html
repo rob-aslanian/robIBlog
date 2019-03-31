@@ -1,0 +1,41 @@
+<h2>{{ title }}</h2>
+<app-message-log
+  type="error"
+  [message]="validationMessage"
+  *ngIf="invalid"
+  [useClose]="false"
+>
+</app-message-log>
+
+<form [formGroup]="postForm" (ngSubmit)="submitForm(postForm.controls)">
+  <div class="input-field">
+    <i class="material-icons prefix">title</i>
+    <input
+      type="text"
+      id="title"
+      [formControl]="postForm.controls['title']"
+      placeholder="Title"
+      (keyup)="validateForm(postForm.controls)"
+    />
+    <span [class.red-text]="postForm.controls['title'].value.length > 100"
+      >{{ postForm.controls["title"].value.length }}/100</span
+    >
+  </div>
+  <div class="input-field">
+    <i class="material-icons prefix">mode_edit</i>
+    <textarea
+      id="body"
+      class="materialize-textarea"
+      [formControl]="postForm.controls['body']"
+      (keyup)="validateForm(postForm.controls)"
+      placeholder="Body"
+    ></textarea>
+  </div>
+
+  <app-image-upload
+    (imageData)="base64textString = $event"
+    [imageSrc]="imageSrc"
+  ></app-image-upload>
+
+  <button class="btn" type="submit">Submit</button>
+</form>

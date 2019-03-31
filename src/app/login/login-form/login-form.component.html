@@ -1,0 +1,25 @@
+<div class="loginForm card">
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.controls)">
+    <div class="input-field col s6">
+      <i class="material-icons prefix">account_circle</i>
+      <input
+        [formControl]="loginForm.controls['name']"
+        type="text"
+        (keyup)="validateForm(loginForm.controls)"
+        placeholder="Name"
+      />
+      <button type="submit" class="btn green">Submit</button>
+    </div>
+  </form>
+
+  <app-message-log
+    *ngIf="hasError"
+    type="error"
+    [message]="
+      loginForm.controls['name'].errors?.required
+        ? 'Name field required!'
+        : 'Min length is 3'
+    "
+    [useClose]="false"
+  ></app-message-log>
+</div>

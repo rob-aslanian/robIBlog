@@ -1,0 +1,17 @@
+<div
+  class="collection-item user"
+  [ngClass]="{ current_user: currentUserID === user.Id }"
+>
+  <div class="user_info">
+    <span class="user_name">{{ user.name }}</span>
+    <span class="user_msg">Posts:{{ user.Posts.length }}</span>
+  </div>
+  <div class="actions" *ngIf="currentUserID === user.Id">
+    <a class="btn text-white" [routerLink]="['/user', user.Id]"
+      >User Settings</a
+    >
+    <button class="btn red" (click)="deleteUser(currentUserID)">
+      Delete
+    </button>
+  </div>
+</div>

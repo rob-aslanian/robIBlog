@@ -1,0 +1,10 @@
+<app-progress *ngIf="loading"></app-progress>
+
+<app-message-log
+  *ngIf="sererMessages !== null"
+  [type]="sererMessages['type']"
+  [message]="sererMessages['message']"
+>
+</app-message-log>
+
+<app-posts *ngIf="hasMessages && !loading" [users]="allUser"> </app-posts>

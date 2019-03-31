@@ -1,0 +1,33 @@
+<nav class="robiblog_navbar">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo robiblog_log">Rob<span>I</span>Blog</a>
+    <ul id="nav-mobile" class="right">
+      <ng-container *ngIf="auth.isLogedIn(); else register">
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="btn orange">Home</a>
+        </li>
+        <li>
+          <a [routerLink]="['/addPost']" routerLinkActive="btn orange">Post</a>
+        </li>
+        <li>
+          <a [routerLink]="['/users']" routerLinkActive="btn orange">Users</a>
+        </li>
+        <li class="user_info">
+          {{ auth.getUser()["name"][0] }}
+        </li>
+        <li>
+          <button class="btn-small red" (click)="auth.logOut()">
+            Log Out
+          </button>
+        </li>
+      </ng-container>
+      <ng-template #register>
+        <li>
+          <a routerLinkActive="btn orange" [routerLink]="['/register']"
+            >Register</a
+          >
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>

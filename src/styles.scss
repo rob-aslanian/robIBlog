@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.robiblog_main {
+  margin-top: 7.5rem;
+}
+.loginForm {
+  padding: 2rem;
+  & form button {
+    margin: 1rem 2rem;
+  }
+}
+
+.collection {
+  z-index: 0;
+  position: static;
+}
+
+.robiblog_log {
+  span {
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+}
+.btn.disable {
+  cursor: not-allowed;
+  filter: grayscale(1) opacity(0.5);
+}
+.input-field {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  display: block;
+}

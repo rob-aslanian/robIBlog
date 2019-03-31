@@ -1,0 +1,13 @@
+<app-progress *ngIf="loading"></app-progress>
+<app-message-log
+  *ngIf="serverMessages !== null"
+  [type]="serverMessages['type']"
+  [message]="serverMessages['message']"
+>
+</app-message-log>
+
+<app-post-form
+  title="Add post"
+  (loading)="loading = $event"
+  (result)="makeRequest($event)"
+></app-post-form>

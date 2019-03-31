@@ -1,0 +1,17 @@
+<div class="progress" *ngIf="load">
+  <div class="indeterminate"></div>
+</div>
+
+<app-message-log
+  *ngIf="serveMessage !== null"
+  [type]="messageType"
+  [message]="serveMessage"
+>
+</app-message-log>
+
+<app-login-form
+  (loading)="load = $event"
+  (messages)="getMessages($event)"
+  (result)="getResult($event)"
+  [routerType]="routerType"
+></app-login-form>

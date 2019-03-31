@@ -1,0 +1,35 @@
+.card-title {
+  text-transform: uppercase;
+  word-break: break-all;
+}
+.card-body {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  word-break: break-all;
+  &::first-letter {
+    color: #c33;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  button {
+    margin-top: 1rem;
+  }
+}
+.link_to {
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.post_image {
+  img {
+    max-height: 300px;
+    width: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+}
