@@ -1,4 +1,8 @@
-<app-search-bar [titles]="postTitles"></app-search-bar>
+<app-search-bar
+  [titles]="postTitles"
+  (searchResult)="search($event)"
+></app-search-bar>
+
 <div class="post_sett_row">
   <select
     [(ngModel)]="selected"
@@ -23,7 +27,17 @@
 <div class="row">
   <app-post
     class="red"
-    *ngFor="let post of filterdUsers"
+    *ngFor="let post of filterdPosts"
     [messages]="post"
   ></app-post>
 </div>
+<app-progress-circle
+  *ngIf="loadingData; else elseTemplate"
+></app-progress-circle>
+<ng-template #elseTemplate>
+  <app-message-log
+    type="info"
+    message="No data to load..."
+    [useClose]="false"
+  ></app-message-log>
+</ng-template>

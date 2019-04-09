@@ -4,7 +4,7 @@ import { LsService } from "./ls.service";
 import { Observable, throwError } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Messages, Message } from "../models/messages";
-import { map, catchError, single } from "rxjs/operators";
+import { map, catchError, single, take } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -33,14 +33,15 @@ export class MessagesService {
   /**
    * GET METHOD: api/messages
    */
-  getAllMessage(): Observable<Messages[]> {
+  getAllMessage(to: number = 2): Observable<Messages[]> {
     let requestOptions = this._requestOptions();
+    let from = to <= 2 ? 0 : to - 2;
 
     if (requestOptions == null) return throwError("You don`t have permission");
 
     return this.http.get(this.api, requestOptions).pipe(
       map((messages: Array<any>) => {
-        return <any>messages.map((message: Message) => {
+        return <any>messages.slice(0, to).map((message: Message) => {
           return new Messages({
             id: message.id,
             user_id: message.user_id,

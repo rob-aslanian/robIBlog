@@ -14,6 +14,8 @@ export class AddPostComponent implements OnInit {
   constructor(private message: MessagesService) {}
 
   makeRequest(message: Message) {
+    console.log(message);
+
     this.message
       .postMessage(message)
       .pipe(

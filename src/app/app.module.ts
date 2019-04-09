@@ -27,6 +27,7 @@ import { UserByIdComponent } from "./users/user-by-id/user-by-id.component";
 import { ImageUploadComponent } from './post-form/image-upload/image-upload.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ProgressCircleComponent } from './progress-circle/progress-circle.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     UserByIdComponent,
     ImageUploadComponent,
     PageNotFoundComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ProgressCircleComponent
   ],
   imports: [
     BrowserModule,

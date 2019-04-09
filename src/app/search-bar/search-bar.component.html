@@ -1,11 +1,29 @@
 <form>
   <div class="input-field">
-    <i class="material-icons prefix">search</i>
-    <input
-      id="icon_prefix"
-      type="text"
-      class="validate"
-      placeholder="Search by title"
-    />
+    <div class="autocomplete">
+      <i class="material-icons prefix">search</i>
+      <input
+        #searchInput
+        id="icon_prefix"
+        type="text"
+        class="validate"
+        name="searchText"
+        placeholder="Search by title"
+        (keyup)="test(searchInput, $event)"
+        autocomplete="off"
+        [(ngModel)]="searchText"
+      />
+      <div class="autocomplete-items" *ngIf="_sugestedItems.length > 0">
+        <span
+          class="autocomplete-item"
+          *ngFor="let title of _sugestedItems; let i = index"
+          (click)="activeItem(i)"
+          [ngClass]="{ active: itemIndex == i }"
+        >
+          <strong>{{ title.substr(0, searchText.length) }}</strong
+          >{{ title.substr(searchText.length) }}
+        </span>
+      </div>
+    </div>
   </div>
 </form>

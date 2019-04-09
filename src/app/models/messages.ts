@@ -21,7 +21,7 @@ export class Messages implements Message {
     this.id = obj.id || null;
     this.user_id = obj.user_id || null;
     this.title = obj.title || null;
-    this.body = obj.title || null;
+    this.body = obj.body || null;
     this.createdAt = obj.createdAt || null;
     this.imageName = obj.imageName || null;
   }
